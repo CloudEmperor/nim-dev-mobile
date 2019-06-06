@@ -31,7 +31,7 @@
     }
   }
   .u-card {
-    margin: 3.6rem 0 1rem 0;
+    margin: 3.6rem 0 2rem 0;
     .weui-cells {
       background-color: #fff;
     }
@@ -40,10 +40,11 @@
       margin-right: 0.8rem;
       width: 2rem;
       height: 2rem;
+      border-radius: 100%;
     }
   }
   .u-search {
-    margin:3.6rem 0 2rem 0;
+    margin:3.6rem 0 3rem 0;
     height: 2rem;
     .weui-cells:after, .weui-cells:before {
       border-color: #f0f0f0;
@@ -91,14 +92,14 @@
     display: inline-block;
     position: absolute;
     right: 1.8rem;
-    top: 1.1rem;
+    top: 2rem;
   }
   /* 未读数标签 */
   .u-unread {
     display: inline-block;
     position: absolute;
     right: 0.4rem;
-    top: 1.1rem;
+    top: 2rem;
     padding: 2px;
     min-width: 1rem;
     min-height: 1rem;

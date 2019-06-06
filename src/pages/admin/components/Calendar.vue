@@ -6,7 +6,7 @@
       <div class="year-month_left">
         <span class="top-time">{{currentMonth}}月</span>
         <ul>
-          <li>周{{weekZh[currentWeek]}}</li>
+          <li>周{{weekdays[newWeek]}}</li>
           <li>{{currentYear}}年</li>
         </ul>
       </div>
@@ -63,16 +63,18 @@
 </template> 
 
 <script>
+import scheduleApi from '@/api'
 export default {
+  name: 'Calendar',
   data() {
     return {
       currentDay: 1,
       currentMonth: 1,
       currentYear: 1970,
       currentWeek: 1,
+      newWeek:1,
       days: [],
       weekdays:['日', '一', '二', '三', '四', '五', '六'],
-      weekZh:['六', '日', '一', '二', '三', '四', '五'],
       // 上下滑动的鼠标位置
       positionSX: "",
       positionEX: "",
@@ -88,6 +90,7 @@ export default {
       monthList: [],
       status: "",
       otherDay: ""
+
     };
   },
   created() {
@@ -96,9 +99,17 @@ export default {
   mounted() {},
   methods: {
     getDayMessage(y, m, d) {
+      this.getCurrentWeek(y, m, d);
       const str = this.formatDate(y, m, d);
       this.$emit("change", str, m, d);
       this.otherDay = d;
+     
+    },
+    getCurrentWeek(y, m, d){
+      const w=`${y}-${m}-${d}`
+      const weekArr=w.split('-');
+      const weeks=new Date(weekArr[0], parseInt(weekArr[1] - 1), weekArr[2]); 
+      this.newWeek=weeks.getDay();
     },
     otherMonth(day){
        if(day<15){
@@ -241,8 +252,35 @@ export default {
           this.otherDay=maxDate
       }
 
-      this.getDayMessage( this.currentYear, this.currentMonth, this.otherDay)
+      this.getDayMessage(this.currentYear, this.currentMonth, this.otherDay)
+      //标记日程
+      this.getMonthEventDay()
 
+    },
+    //当前月份所有有日程的天（标记）
+    getMonthEventDay(){
+      const self=this
+      const url = scheduleApi.getSign
+      const yearOrMonth=`${this.currentYear}-${this.currentMonth}`
+      const postData={
+          month:yearOrMonth
+      }
+      self.$post(url, postData).then(res =>{
+          if (res.result ===0){
+                const list=res.data || []  
+                 self.days.forEach(item =>{
+                  if(item.day.getMonth()+1 === this.currentMonth){
+                      list.forEach(vo =>{
+                         if(self.getAppVersion() ===2) vo.start=vo.start.replace(/-/g, "/")
+                         if(item.day.getFullYear() === new Date(vo.start).getFullYear() && item.day.getMonth() === new Date(vo.start).getMonth() && item.day.getDate() === new Date(vo.start).getDate()){
+                              item.status='3'
+                         }
+                      })
+                  }
+              })
+          }
+      })
+      
     },
     //     上个月信息
     pickPre(year, month) {
@@ -264,6 +302,20 @@ export default {
       let d = day;
       if (d < 10) d = "0" + d;
       return y + "-" + m + "-" + d;
+    },
+    getAppVersion() {
+        let u = navigator.userAgent,
+            app = navigator.appVersion;
+        const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+        let type = null
+        if (isAndroid) {
+            type = 1
+        } else {
+            type = 2
+        }
+
+        return type
+
     }
   }
 };
@@ -388,8 +440,8 @@ export default {
           border-radius: 50%;
           background-color: #f2553d;
           position: absolute;
-          bottom: 1px;
-          left: 49%;
+          bottom: 6px;
+          left: 48%;
         }
         .o {
           width: 4px;

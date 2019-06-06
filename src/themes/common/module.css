@@ -34,155 +34,53 @@
   .m-article {
     background: $theme_background;
   }
-
-  /* 登录注册页面 */
-  .m-login {
-    .cells {
-      position: relative;
-      margin: 10px auto;
-      .cell {
-        position: relative;
-        width: 100%;
-        border-bottom: 1px solid #ddf;
-        line-height: 2rem;
-      }
-      .cell-ipt{
-           margin-bottom:1.25rem;
-      }
-      .cell-ipt:before {
-           content:'';
-           height:100%;
-           width:1px;
-           background:#fff;
-           position:absolute;
-           top: 0;
-           left: 3rem;
-      }
-      .logo {
-        display: block;
-        margin: 1rem auto;
-        width: 50%;
-        height: auto;
-      }
-      .ipt {
-        box-sizing: border-box;
-        padding: 0.6rem 0 0.6rem 4rem;
-        font-size: 0.9rem;
-        color: #fff;
-        width: 100%;
-        border: none;
-        border-radius: 4px;
-        background-color: rgba(255,255,255,.2);
-        &::placeholder {
-          color: #fff;
-        }
-      }
-      .icon {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        background-image: url(http://yx-web.nos.netease.com/webdoc/h5/im/icons.png);
-        background-repeat: no-repeat;
-        vertical-align: middle;
-      }
-      .icon-loading {
-        background-position: 0 -112px;
-      }
-      .icon-account {
-        background-position: 0 -112px;
+   /* 实际开发新加页面整体布局及头部样式 */
+  .container-content{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background:#fafafa;
+    .head-tab{
         position: absolute;
-        left: 1rem;
-        top: 0.6rem;
-      }
-      .icon-pwd {
-        background-position: 0 -133px;
-        position: absolute;
-        left: 1rem;
-        top: 0.6rem;
-      }
-      .btn {
-        margin: 0.6rem 0;
-        box-sizing: border-box;
+        top: 0;
+        left: 0;
+        margin: 0;
         width: 100%;
-        line-height: 2.4rem;
-        height: 2.4rem;
-        border-radius: 0.4rem;
-        background: #fff;
-        color: #333;
-        font-size: 1rem;
-        border: none;
-        cursor: pointer;
-      }
-      .btn-regist {
-        background: transparent;
-        color: #fff;
-      }
-      .error {
-        float: right;
-        clear: both;
-        color: $color_error;
-      }
-    }
-    .cells-log{
-      margin-bottom: 10rem;
-    }
-    .cells-record{
-      display:flex;
-      justify-content: space-between;
-      align-items: center;
-      span {
-        display: inline-block;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        position: relative;
-        input[type=checkbox]{
-            visibility: hidden;
-          }
-        .checkbox-color1,.checkbox-color2 ,label{
-            display: block;    
-            width: 15px;    
-            height: 15px;  
-            border-radius: 4px;  
-            cursor: pointer;    
-            position: absolute;    
-            top: 0;    
-            left: 0;    
-            background: #eee;
+        height: 3.6rem;
+        overflow: hidden;
+        z-index: 3;
+        color: #000;
+        background-color: #f5f5f5;
+        box-shadow: 0 2px 3px -1px #eaeaea;
+        .vux-header-left{
+            .left-arrow:before{
+                border-color: #000 !important;
+            }     
         }
-         i{
-           color:#fff;
-           margin-left: 10px;
-           font-size:12px;
-         }
-      }
-      .rbpchecked {
-        .checkbox-color1, label:before {
-           display: block;
-           content: "\2714";
-           text-align: center;
-           font-size: 12px;
-           color: white;
-           background: rgb(56,103,155);
+        .head-tab_right{
+            position: absolute;
+            right: 0;
+            top: 0.1rem;
+            font-size: 0.8rem;
+            text-align: right;
+            width: 4rem;
+            img{
+                width: 1.6rem;
+                height: 1.6rem;
+            }
         }
-      }
-      .alchecked {
-        .checkbox-color2, label:before {
-           display: block;
-           content: "\2714";
-           text-align: center;
-           font-size: 12px;
-           color: white;
-           background: rgb(56,103,155);
-        }
-      }
     }
-    .u-card {
-      .weui-cells {
-        background-color: inherit;
-      }
-    }
-  }
+   
+}
 
   /* 按钮tab切换 */
   .m-tab {
@@ -319,6 +217,7 @@
       display: block;
       box-sizing: border-box;
       padding: 1rem 2%;
+      margin-top: 3.6rem;
       width: 100%;
       -webkit-overflow-scrolling: touch;
       overflow-y: scroll;
@@ -369,10 +268,10 @@
         position: relative;
         display: inline-block;
         box-sizing: border-box;
-        margin: 1rem 0 0;
+        margin: 0.5rem 0 0;
         width: 100%;
-        height: 1.9rem;
-        line-height: 1.8rem;
+        height: 3rem;
+        line-height: 3rem;
         border: 1px solid #ccc;
         border-radius: 0.3rem;
         text-align: center;

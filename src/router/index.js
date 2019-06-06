@@ -5,11 +5,11 @@ Vue.use(VueRouter)
 // 定义路由
 // 每个路由应该映射一个组件。 其中"component"是一个组件配置对象。
 const routes = [
-    // 设置聊天列表页面为首页
+    // 设置登陆页面为首页
     {
         path: "/",
         redirect: {
-            name: "home"
+            name: "login"
         }
     },
     //主页
@@ -53,10 +53,164 @@ const routes = [
             }
         ]
     },
-
-
-
-
+    // 登录
+    {
+        path: "/login",
+        name: "login",
+        component(resolve) {
+            require(["@/pages/login/Login"], resolve);
+        }
+    },
+    // 灵活查询
+    {
+        path: "/flexibleQuery",
+        name: "FlexibleQuery",
+        component(resolve) {
+            require(["@/pages/flexibleQuery/FlexibleQuery"], resolve);
+        }
+    },
+    {
+        path: "/flexibleQuery1",
+        name: "FlexibleQuery1",
+        component(resolve) {
+            require(["@/pages/flexibleQuery/FlexibleQuery1"], resolve);
+        }
+    },
+    // 名称查询
+    {
+        path: "/searchProject",
+        name: "SearchProject",
+        component(resolve) {
+            require(["@/pages/flexibleQuery/SearchProject"], resolve);
+        }
+    },
+    // 项目动态
+    {
+        path: "/dynamic",
+        name: "Dynamic",
+        component(resolve) {
+            require(["@/pages/dynamic/Dynamic"], resolve);
+        }
+    },
+    // 查看图片
+    {
+        path: "/viewImg",
+        name: "ViewImg",
+        component(resolve) {
+            require(["@/pages/dynamic/ViewImg"], resolve);
+        }
+    },
+    //审批管理
+    {
+        path: "/Approval",
+        name: "Approval",
+        component(resolve) {
+            require(["@/pages/management/Approval"], resolve);
+        }
+    },
+    //发起审批
+    {
+        path: "/Initiateapproval",
+        name: "Initiateapproval",
+        component(resolve) {
+            require(["@/pages/management/Initiateapproval"], resolve);
+        }
+    },
+    //提交审批
+    {
+        path: "/Review",
+        name: "Review",
+        component(resolve) {
+            require(["@/pages/management/Review"], resolve);
+        }
+    },
+    //审批
+    {
+        path: "/Initiatepending",
+        name: "Initiatepending",
+        component(resolve) {
+            require(["@/pages/management/Initiatepending"], resolve);
+        }
+    },
+    //待处理工作
+    {
+        path: "/pending",
+        name: "pending",
+        component(resolve) {
+            require(["@/pages/management/pending"], resolve);
+        }
+    },
+    //   我的项目
+    {
+        path: "/myprojects",
+        name: "myprojects",
+        component(resolve) {
+            require(["@/pages/management/myprojects"], resolve);
+        }
+    },
+    //   添加项目
+    {
+        path: "/addProjects",
+        name: "addProjects",
+        component(resolve) {
+            require(["@/pages/management/AddProjects"], resolve);
+        }
+    },
+    //   事件详情
+    {
+        path: "/EventDetails",
+        name: "EventDetails",
+        component(resolve) {
+            require(["@/pages/management/EventDetails"], resolve);
+        }
+    },
+    //   编辑事件
+    {
+        path: "/editors",
+        name: "editors",
+        component(resolve) {
+            require(["@/pages/management/editors"], resolve);
+        }
+    },
+    //项目详情 
+    {
+        path: "/ProjectDetails",
+        name: "ProjectDetails",
+        component(resolve) {
+            require(["@/pages/management/ProjectDetails"], resolve);
+        }
+    },
+    //项目详情节点
+    {
+        path: "/Nodedetails",
+        name: "Nodedetails",
+        component(resolve) {
+            require(["@/pages/management/Nodedetails"], resolve);
+        }
+    },
+    //添加项目节点详情事件   
+    {
+        path: "/Addevent",
+        name: "Addevent",
+        component(resolve) {
+            require(["@/pages/management/Addevent"], resolve);
+        }
+    },
+    {
+        path: "/information",
+        name: "information",
+        component(resolve) {
+            require(["@/pages/management/information"], resolve);
+        }
+    },
+    // 添加代办事项
+    {
+        path: "/addSchedule",
+        name: "addSchedule",
+        component(resolve) {
+            require(["../pages/admin/scheduleModel/AddSchedule"], resolve);
+        }
+    },
     // 系统消息
     {
         path: "/sysmsgs",

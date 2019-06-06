@@ -1,10 +1,11 @@
 <template>
   <div class="g-inherit m-article">
     <x-header class="m-tab" :left-options="{backText: ' '}">
-      <button-tab class="m-tab-top" v-model="sysType">
+       <h1 class="m-tab-top">系统消息</h1>
+      <!-- <button-tab class="m-tab-top" v-model="sysType">
         <button-tab-item class="u-tab-top">系统消息</button-tab-item>
         <button-tab-item class="u-tab-top">自定义消息</button-tab-item>
-      </button-tab>
+      </button-tab> -->
       <a slot="left"></a>
       <a slot="right" @click.stop="clearMsgs">清空</a>
     </x-header>
@@ -220,6 +221,7 @@ export default {
 
 <style type="text/css">
   .p-sysmsgs {
+      padding-top: 3.6rem;
     .u-list {
       height: 100%;
       overflow-y: scroll;

@@ -49,13 +49,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
   .p-msg-receipt {
     background-color: #ebeef3;
-
-    .tip {
-      padding: 1rem;
-      color: #666;
+    .g-body{
+      padding-top: 3.6rem;
+       .tip {
+        padding: 1rem;
+        color: #666;
+      }
     }
+   
   }
 </style>

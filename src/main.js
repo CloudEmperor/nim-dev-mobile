@@ -12,8 +12,8 @@ Vue.prototype.$put = put
 Vue.prototype.$del = del
 
 // // 添加Fastclick移除移动端点击延迟
- import FastClick from 'fastclick'
- FastClick.attach(document.body)
+import FastClick from 'fastclick'
+FastClick.attach(document.body)
 
 // 添加手势触摸事件，使用方法如 v-touch:swipeleft
 import VueTouch from './plugins/touchEvent'
@@ -29,7 +29,7 @@ import router from './router'
 require('./utils/polyfill')
 
 new Vue({
-  router,
-  store,
-  render: h => h(App),
+    router,
+    store,
+    render: h => h(App),
 }).$mount('#app')

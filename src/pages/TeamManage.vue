@@ -214,14 +214,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
   .g-window .m-article.p-teammanager {
     display:flex;
     background-color: #e6ebf0;
     
     .m-body {
-      overflow-y: scroll;
+      overflow-y: auto;
       width: 100%;
+      padding-top: 3.6rem;
     }
 
     img.avatar{

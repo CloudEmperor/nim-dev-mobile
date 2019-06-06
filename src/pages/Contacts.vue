@@ -1,6 +1,13 @@
 <template>
   <div class="g-inherit m-main p-contacts">
-    <div class="m-cards u-search-box-wrap">
+     <x-header class="m-tab" :left-options="leftBtnOptions" @on-click-back = "onClickBack">
+      <h1 class="m-tab-top">通讯录</h1>
+      <a slot="left"></a>
+      <div @click="rightClick" class="m-tab-right" slot="right">
+        <a class="vux-header-more"></a>
+      </div>
+    </x-header>
+    <!-- <div class="m-cards u-search-box-wrap">
       <span class="u-search-box">
         <a href="#/searchUser/0">
           添加好友\群
@@ -11,7 +18,7 @@
         创建组\群
         </a>
       </span>
-    </div>
+    </div> -->
     <div id="userList" class="m-list">
       <group class="u-card" title="群">
         <cell title="高级群" is-link link='/teamlist/advanced'>
@@ -31,23 +38,40 @@
           :list="friendslist">
         </RecyclerView> -->
       </group>
-      <group class="u-card" title="机器人">
+      <!-- <group class="u-card" title="机器人">
         <cell v-for="robot in robotslist" :title="robot.nick" :key="robot.account" is-link :link="robot.link">
           <img class="icon u-circle" slot="icon" width="20" :src="robot.avatar">
         </cell>
-      </group>
+      </group> -->
       <group class="u-card" title="黑名单">
         <cell v-for="friend in blacklist" :title="friend.alias" :key="friend.account" is-link :link="friend.link">
           <img class="icon u-circle" slot="icon" width="20" :src="userInfos[friend.account].avatar">
         </cell>
       </group>
     </div>
+    <actionsheet v-model="isShow" :menus="menus" :close-on-clicking-mask="true" show-cancel @on-click-menu="menuClick"></actionsheet>
   </div>
 </template>
 
 <script>
-
+import { Actionsheet } from 'vux'
 export default {
+   components: {
+    Actionsheet
+  },
+  data () {
+    return {
+      leftBtnOptions: {
+        backText: ' ',
+        preventGoBack: true,
+      },
+      isShow:false,
+      menus:{
+        menu1: '添加好友/\群',
+        menu2: '创建组/\群'
+      }
+    }
+  },
   computed: {
     friendslist () {
       return this.$store.state.friendslist.filter(item => {
@@ -84,27 +108,47 @@ export default {
     userInfos () {
       return this.$store.state.userInfos
     }
+  },
+  methods:{
+    onClickBack () {
+      window.history.go(-1)
+    },
+    rightClick(){
+      this.isShow=true
+    },
+    menuClick(menuKey){
+      if(menuKey==='menu1'){
+           window.location.href='#/searchUser/0'
+      }else if(menuKey==='menu2'){
+           window.location.href='#/teaminvite/0'
+      }
+     
+    }
   }
 }
 </script>
 
-<style type="text/css" >
+<style type="text/css" lang="less">
   .p-contacts {
+    padding-top:3.6rem !important;
     .add-friend {
       background-color: #fff;
     }
     .m-list {
-      padding-top: 8rem;
+      padding-top: 3rem;
     }
     .u-search-box-wrap {
+      width: auto;
+      margin: 0 auto;
+      padding: 1rem 5%;
       text-align: center;
+      background: #f9fcff;
     }
     .u-search-box {
       position: relative;
       display: inline-block;
       box-sizing: border-box;
       min-width: 45%;
-      padding: 1em;
       height: 3rem;
       text-align: center;
       border: 1px solid #ccc;
@@ -116,6 +160,9 @@ export default {
         box-sizing: border-box;
         height: 100%;
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
     .u-card {

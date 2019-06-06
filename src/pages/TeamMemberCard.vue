@@ -183,9 +183,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
   .g-body{
-    
+    padding-top: 3.6rem;
   }
   .g-avatar{
     margin: 2rem auto;

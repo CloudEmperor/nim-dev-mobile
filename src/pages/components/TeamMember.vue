@@ -164,7 +164,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 
 .m-members {
   display: flex;
@@ -172,7 +172,7 @@ export default {
   margin: 0 auto;
   text-align: center;
   width: 100%;
-  margin-top: 3.6rem;
+  margin: 3.6rem 0 1rem 0;
 
   img.avatar{
     width: 3.8rem;

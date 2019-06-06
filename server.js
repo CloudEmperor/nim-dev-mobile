@@ -37,10 +37,6 @@ app.use('/webdemo/h5/res', express.static(path.join(projPath, 'res')))
 app.engine('html', ejs.__express);
 app.set('view engine', 'html')
 
-app.get('/webdemo/h5/login.html', function (req, res, next) {
-  res.render(path.join(projPath, 'login'))
-})
-
 // 单页应用页面
 app.get('/webdemo/h5/index.html', function (req, res, next) {
   res.render(path.join(projPath, 'index'))

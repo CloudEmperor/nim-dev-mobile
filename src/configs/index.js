@@ -1,7 +1,7 @@
 let config = {
   sdk: 'NIM_Web_SDK_v6.1.0',
   // 用户自定义的登录注册地址
-  loginUrl: '/webdemo/h5/login.html',
+  loginUrl: '/webdemo/h5/index.html#/login',
   homeUrl: '/webdemo/h5/index.html#/home',
   
   // 资源路径根目录，为了方便用户部署在二级以上URL路径上
@@ -21,12 +21,14 @@ let config = {
   // 本地消息显示数量，会影响性能
   localMsglimit: 36,
   //是否开启indexDB
-  useDb: false
+  useDb: false,
+  //图片路径
+  imgUrl: 'http://114.115.157.154:9080/resource'
 }
 
 let env = 'dev'
 if (process.env.NODE_ENV === 'production'){
-  env = 'online'
+  env = 'prod'
 }else{
   env = 'dev'
 }
@@ -34,17 +36,12 @@ let appConfig = {
   // 用户的appkey
   // 用于在web demo中注册账号异步请求demo 服务器中使用
   dev: {
-    //appkey: "fe416640c8e8a72734219e1847ad2547",
-   // postUrl: "https://apptest.netease.im",
-   //鹏迪
     appkey: "a5b1946c089c3cd759aa5adf761cf32b", 
     postUrl: "https://app.netease.im", 
-    //apiUrl: "http://114.115.157.154:9080", //小幺鸡
-    apiUrl:"http://192.168.1.33" //孟祥雨
+    apiUrl:"http://192.168.1.33" 
    
   },
-  online: {
-   // appkey: '45c6af3c98409b18a84451215d0bdd6e',
+  prod: {
     appkey: "a5b1946c089c3cd759aa5adf761cf32b", 
     postUrl: "https://app.netease.im",
     apiUrl: "http://114.115.157.154:9080",

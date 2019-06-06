@@ -4,14 +4,16 @@
 			<router-view></router-view>
 		</transition>
         <tab-bar></tab-bar>
+		<add-shortcut @change="shortcut"></add-shortcut>
 	</div>
 </template>
 
 <script>
 import TabBar from '../components/TabBar'
+import AddShortcut from './components/AddShortcut'
 export default {
  name: 'Main',
- components: {TabBar},
+ components: {TabBar, AddShortcut},
  data() {
  return {
     transitionName: 'forward'
@@ -19,7 +21,27 @@ export default {
  },
  created(){},
  mounted(){},
- methods:{}
+ methods:{
+	 shortcut(c){
+		 let url=''
+		 switch(c){
+			 //创建日程提醒
+			 case 'rc': url='/addSchedule'
+			 break;
+			 //提交审批
+			 case 'sp': url='/Review'
+			 break;
+			 //添加项目
+			 case 'xm': url='/addProjects'
+			 break;
+		 }
+
+		this.$router.push({
+				path:url
+			})
+	   
+	 }
+ }
 }
 </script>
 

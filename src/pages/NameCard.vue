@@ -18,22 +18,22 @@
       </div>
     </div>
     <div v-else class="m-list">
-      <group class="u-card">
+      <group class="u-card m-card">
         <cell :title="userInfo.account" :inline-desc="'昵称: '+userInfo.nick" :value="userInfo.gender=='不显示'?'':userInfo.gender">
           <img class="icon" slot="icon" width="20" :src="userInfo.avatar">
         </cell>
       </group>
-      <group class="u-card">
+      <group class="u-card m-card">
         <cell title="性别">{{userInfo.gender}}</cell>
         <cell title="生日">{{userInfo.birth}}</cell>
         <cell title="手机">{{userInfo.tel}}</cell>
         <cell title="邮箱">{{userInfo.email}}</cell>
         <cell title="签名">{{userInfo.sign}}</cell>
       </group>
-      <group v-show="isFriend" class="u-card">
+      <group v-show="isFriend" class="u-card m-card">
         <cell title="备注名" is-link :link="remarkLink">{{userInfo._alias}}</cell>
       </group>
-      <group v-if='!isSelf' class="u-card">
+      <group v-if='!isSelf' class="u-card m-card">
         <x-switch class="u-switch" title="黑名单" v-model="isBlack" @on-change="changeBlack"></x-switch>
       </group>
       <div class="u-bottom">
@@ -125,13 +125,16 @@ export default {
 }
 </script>
 
-<style type="text/css">
+<style type="text/css" lang="less">
   .p-namecard {
+    .m-card{
+      margin:0;
+    }
     .m-list {
       padding-top: 3.6rem;
     }
     .u-bottom {
-      margin-bottom: 2rem;
+      margin: 2rem 0;
     }
   }
 

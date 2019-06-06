@@ -375,10 +375,10 @@ export default {
       if (window.stopPlayAudio) {
         window.stopPlayAudio()
       }
-      if (location.protocol === 'http:') {
-        self.$toast('请使用https协议')
-        return
-      }
+      // if (location.protocol === 'http:') {
+      //   self.$toast('请使用https协议')
+      //   return
+      // }
       if (self.recording) {
         return
       }

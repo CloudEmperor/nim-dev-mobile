@@ -13,8 +13,7 @@ let webpackConfig = {
   context: projectRoot,
   //页面入口文件配置
   entry: {
-    main: "./src/main.js",
-    login: "./src/login.js"
+    main: "./src/main.js"
   },
   //入口文件输出配置
   output: {
