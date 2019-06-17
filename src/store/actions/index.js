@@ -27,7 +27,7 @@ function connectNim({ state, commit, dispatch }, obj) {
         }
         if (!loginInfo.uid) {
             // 无cookie，直接跳转登录页
-            pageUtil.turnPage(null, 'login')
+             pageUtil.turnPage('无历史登录记录，请重新登录', 'login')
         } else {
             // 有cookie，重新登录
             dispatch('initNimSDK', loginInfo)

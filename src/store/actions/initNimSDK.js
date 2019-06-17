@@ -47,8 +47,9 @@ export function initNimSDK({ state, commit, dispatch }, loginInfo) {
         onerror: function onError(event) {
             // alert(JSON.stringify(event))
             //debugger
-            // alert('网络连接状态异常')
-            location.href = config.loginUrl
+            //alert('网络连接状态异常')
+            //location.href = config.loginUrl
+			 pageUtil.turnPage('网络连接状态异常,请检查网络并重新登录', 'login')
         },
         onwillreconnect: function onWillReconnect() {
             console.log(event)
@@ -57,7 +58,7 @@ export function initNimSDK({ state, commit, dispatch }, loginInfo) {
             switch (error.code) {
                 // 账号或者密码错误, 请跳转到登录页面并提示错误
                 case 302:
-                    pageUtil.turnPage('', 'login')
+                    pageUtil.turnPage('账号或者密码错误,请重新登录', 'login')
                     break
                     // 被踢, 请提示错误后跳转到登录页面
                 case 'kicked':

@@ -1,4 +1,5 @@
 import config from '../configs'
+import cookie from './cookie'
 
 const pageMap = {
   'login': config.loginUrl,
@@ -17,6 +18,7 @@ var page = {
       if (pageMap[url]) {
         url = pageMap[url]
       }
+	  cookie.delCookie('isLogin')
       window.location.href = url
     }
   },
