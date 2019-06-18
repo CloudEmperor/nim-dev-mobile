@@ -126,6 +126,9 @@ export default {
                 this.$vux.toast.text(res.message, 'bottom')
                 this.isLogin = true
             }
+        }).catch(err =>{
+             this.$vux.toast.text('登陆失败，请重试', 'bottom')
+             this.isLogin = true
         })
     },
     adminLogin() {
@@ -165,6 +168,9 @@ export default {
                 this.isLogin = true
             }
 
+        }).catch(err =>{
+             this.$vux.toast.text('登陆失败，请重试', 'bottom')
+             this.isLogin = true
         })
     },
     rbPassword(type) {
